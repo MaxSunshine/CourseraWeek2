@@ -1,0 +1,52 @@
+---
+title: "Fars Functions"
+author: "Josef Tapper"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Fars Functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This is the vignette documentation for the Corusera Week 4 exercise.
+
+## Functions
+#### fars_read
+This function takes a path as a parameter reads the file into a data.frame object.\n
+```{r fars_read_chunk, echo=TRUE}
+df<-CourseraWeek2::fars_read(CourseraWeek2::make_filename(2013))
+head(df)
+```
+
+#### make_filename
+This function takes an integer representing the year and returns a string formatted to match the filename of the file for that year.\n
+
+```{r make_filename_chunk, echo=TRUE }
+CourseraWeek2::make_filename(2013)
+```
+
+#### fars_read_years
+This function takes a list of years,and reads the data from the corresponding files into a single dataset.\n
+
+```{r fars_read_years_chunk,echo=TRUE}
+df<-CourseraWeek2::fars_read_years(c(2013,2014))
+head(df)
+```
+
+#### fars_summarize_years
+This function takes a list of years as a parameter and uses it to build the filenames for those years
+based on the appropriate naming convetion to generate a dataframe of the years and months of each accident summarised by month with each year as a separate variable.\n
+
+```{r fars_summarize_years_chunk,echo=TRUE }
+CourseraWeek2::fars_summarize_years(c(2013,2014))
+```
+
+#### fars_map_state
+This function generates a map of the state with the location of the accidents. It uses parameters of state number and year.\n
+
+```{r fars_map_state_chunk, eval=FALSE, include=FALSE}
+ CourseraWeek2::fars_map_state(10,2014)
+```
+I would put a map here but the maps package is a bit dodgy. It will run OK in the RStudio, but crashes when you Knit. This is a documented error with no solution...but it made it to CRAN. (Probably with the dontrun option)
+
